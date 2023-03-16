@@ -18,9 +18,8 @@ For Each ws In Worksheets
     Dim StockOpen As Double
     Dim StockClose As Double
     
-    Dim lastrow As Double
-    lastrow = ws.Cells(Rows.Count, 1).End(xlUp).Row
-
+    Dim LastRow As Double
+    LastRow = ws.Cells(Rows.Count, 1).End(xlUp).Row
 
 Volume = 0
 
@@ -28,10 +27,10 @@ Dim Summary_Table_Row As Double
 Summary_Table_Row = 2
 
 'loop for ticker and volume'
-For i = 2 To lastrow
+   For i = 2 To lastrow
 
 
-If ws.Cells(i + 1, 1).Value <> ws.Cells(i, 1) Then
+    If ws.Cells(i + 1, 1).Value <> ws.Cells(i, 1) Then
     Ticker = ws.Cells(i, 1).Value
     Volume = Volume + ws.Cells(i, 7).Value
 
@@ -61,7 +60,6 @@ Summary_Table_Row = Summary_Table_Row + 1
 ElseIf ws.Cells(i - 1, 1).Value <> ws.Cells(i, 1) Then
     StockOpen = ws.Cells(i, 3)
     
-
 Else: Volume = Volume + ws.Cells(i, 7).Value
 
 End If
@@ -83,7 +81,5 @@ End If
     Next i
     
 Next ws
-    
-   
-   
+
 End Sub
